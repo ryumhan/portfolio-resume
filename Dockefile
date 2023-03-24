@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN yarn set version berry
+
+EXPOSE 80
+
+CMD ["yarn", "start"]
