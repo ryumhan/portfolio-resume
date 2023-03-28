@@ -1,27 +1,27 @@
+import { useMemo } from 'react';
 import { TypoGraphy } from '@/components/common-style';
 import { LayOutContainer, NavItem, NavMenu } from './style';
 
 interface Props {
   children: React.ReactElement;
+  menuList: string[];
+  selectCallback: (select: number) => void;
 }
 
-const Layout = ({ children }: Props): React.ReactElement => {
+const Layout = ({ children, menuList, selectCallback }: Props): React.ReactElement => {
   return (
     <LayOutContainer>
       {/* nav bar */}
       <NavMenu>
-        <NavItem>
-          <TypoGraphy>Ryu MyungHan</TypoGraphy>
-        </NavItem>
-        <NavItem>
-          <TypoGraphy>Career</TypoGraphy>
-        </NavItem>
-        <NavItem>
-          <TypoGraphy>Project</TypoGraphy>
-        </NavItem>
-        <NavItem>
-          <TypoGraphy>Education</TypoGraphy>
-        </NavItem>
+        {useMemo(() => {
+          return menuList.map((menu: string, index: number) => {
+            return (
+              <NavItem onClick={() => selectCallback(index)} key={menu + index}>
+                <TypoGraphy>{menu}</TypoGraphy>
+              </NavItem>
+            );
+          });
+        }, [menuList])}
       </NavMenu>
 
       {/* contents */}

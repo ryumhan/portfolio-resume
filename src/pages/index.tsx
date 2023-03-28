@@ -1,23 +1,46 @@
-import styled from '@emotion/styled';
 import { NextPage } from 'next';
+
+import { useMemo, useRef } from 'react';
+import styled from '@emotion/styled';
 import Career from '@/components/career';
 import Education from '@/components/education';
 import Project from '@/components/project';
 import RyuMyungHan from '@/components/ryumyunghan';
+import Layout from '@/components/Layout';
+import useSectionControl from '@/components/Layout/useSectionController';
+import { MENU_CONFIG } from '@/constants';
 
 const PageConatiner = styled.div`
-  overflow: scroll;
+  overflow: auto;
+  scroll-snap-type: y mandatory; /* 부모 적용 */
   height: calc(100% - 50px);
 `;
 
 const Home: NextPage = () => {
+  const root = useRef<HTMLDivElement>(null);
+
+  const eduRef = useRef<HTMLDivElement>(null);
+  const carRef = useRef<HTMLDivElement>(null);
+  const proRef = useRef<HTMLDivElement>(null);
+  const ryuRef = useRef<HTMLDivElement>(null);
+
+  const [sections, detectScroll, selectCallback] = useSectionControl({
+    menus: MENU_CONFIG,
+    refs: [ryuRef, carRef, proRef, eduRef],
+  });
+
   return (
-    <PageConatiner>
-      <Education />
-      <Career />
-      <Project />
-      <RyuMyungHan />
-    </PageConatiner>
+    <Layout
+      menuList={useMemo(() => sections.map((section) => section.name), [])}
+      selectCallback={selectCallback}
+    >
+      <PageConatiner ref={root} onScroll={detectScroll}>
+        <RyuMyungHan ryuRef={ryuRef} />
+        <Career carRef={carRef} />
+        <Project proRef={proRef} />
+        <Education eduRef={eduRef} />
+      </PageConatiner>
+    </Layout>
   );
 };
 

@@ -1,7 +1,12 @@
+import { MutableRefObject } from 'react';
 import { Container } from './style';
 
-const Project = (): React.ReactElement => {
-  return <Container>Project</Container>;
+interface Props {
+  proRef: MutableRefObject<HTMLDivElement | null>;
+}
+
+const Project = ({ proRef }: Props): React.ReactElement => {
+  return <Container ref={proRef}>Project</Container>;
 };
 
 export default Project;

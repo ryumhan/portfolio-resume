@@ -1,7 +1,12 @@
+import { MutableRefObject } from 'react';
 import { Container } from './style';
 
-const RyuMyungHan = (): React.ReactElement => {
-  return <Container>Ryumyunghan</Container>;
+interface Props {
+  ryuRef: MutableRefObject<HTMLDivElement | null>;
+}
+
+const RyuMyungHan = ({ ryuRef }: Props): React.ReactElement => {
+  return <Container ref={ryuRef}>RyuMyungHan</Container>;
 };
 
 export default RyuMyungHan;

@@ -86,6 +86,7 @@
     "no-nested-ternary": "off"
   },
   "globals": {
-    "React": "writable"
+    "React": "writable",
+    "NodeJS": true
   }
 }
