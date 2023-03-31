@@ -32,7 +32,7 @@ const useSectionControl = ({ menus, refs }: Props): [Section[], DetectCallback, 
   );
 
   const selectCallback = useCallback((select: number) => {
-    sectionList[select].ref?.current?.scrollIntoView();
+    sectionList[select].ref?.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   return [sectionList, detectScroll, selectCallback];
