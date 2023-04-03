@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Vertical } from '../common-style';
+import { Vertical } from '@/components/common-style';
 
 export const Container = styled.div`
   width: 100%;
@@ -9,14 +9,13 @@ export const Container = styled.div`
 `;
 
 export const LeftHalfContainer = styled(Vertical)`
-  width: 35%;
+  width: 40%;
   height: 100%;
   padding: 12px;
-  background: gray;
 `;
 
 export const RightHalfContainer = styled(Vertical)`
-  width: 65%;
+  width: 60%;
   height: 100%;
   padding: 50px;
   background: #fff;

@@ -1,8 +1,8 @@
 import { MutableRefObject } from 'react';
-import { CAREER_PATH, INTRODUCTION_CONFIG } from '@/constants';
-import CareerBar from './career-bar';
+import { Horizontal } from '@/components/common-style';
+import { CAREER_PATH, INTRODUCTION_CONFIG, SKILLSET_CONFIG } from '@/constants';
+import CareerSection from './career-section';
 import { RightHalfContainer, Container, LeftHalfContainer } from './style';
-import { Horizontal } from '../common-style';
 import Profile from './profile';
 
 interface Props {
@@ -21,7 +21,7 @@ const RyuMyungHan = ({ ryuRef }: Props): React.ReactElement => {
           />
         </LeftHalfContainer>
         <RightHalfContainer>
-          <CareerBar careerPath={CAREER_PATH} />
+          <CareerSection careerPath={CAREER_PATH} skillSets={SKILLSET_CONFIG} />
         </RightHalfContainer>
       </Horizontal>
     </Container>

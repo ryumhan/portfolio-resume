@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { TypoGraphy } from '@/components/common-style';
+import { Horizontal, TypoGraphy } from '@/components/common-style';
 import { LayOutContainer, NavItem, NavMenu } from './style';
 
 interface Props {
@@ -12,17 +12,22 @@ const Layout = ({ children, menuList, selectCallback }: Props): React.ReactEleme
   return (
     <LayOutContainer>
       {/* nav bar */}
-      <NavMenu>
-        {useMemo(() => {
-          return menuList.map((menu: string, index: number) => {
-            return (
-              <NavItem onClick={() => selectCallback(index)} key={menu + index}>
-                <TypoGraphy>{menu}</TypoGraphy>
-              </NavItem>
-            );
-          });
-        }, [menuList])}
-      </NavMenu>
+      <Horizontal justifyContent="space-between" style={{ width: '100%' }}>
+        <div>
+          <TypoGraphy style={{ fontSize: '25px' }}>PortFolio</TypoGraphy>
+        </div>
+        <NavMenu>
+          {useMemo(() => {
+            return menuList.map((menu: string, index: number) => {
+              return (
+                <NavItem onClick={() => selectCallback(index)} key={menu + index}>
+                  <TypoGraphy style={{ fontSize: '24px' }}>{menu}</TypoGraphy>
+                </NavItem>
+              );
+            });
+          }, [menuList])}
+        </NavMenu>
+      </Horizontal>
 
       {/* contents */}
       {children}

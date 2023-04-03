@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Vertical } from '@/components/common-style';
+import Image from 'next/image';
+import { GlobalColor, Vertical } from '@/components/common-style';
 
 export const ProfileContainer = styled(Vertical)`
   margin: auto;
@@ -12,11 +13,29 @@ export const ProfileImageContainer = styled.div`
   width: 350px;
   height: 460px;
   border-radius: 50%;
-  border: solid 10px red;
+  border: solid 7px ${GlobalColor.contentsTone};
+  cursor: pointer;
+  transition: ease 0.2s;
+
+  &:hover {
+    background-color: skyblue;
+    color: blue;
+    border: solid 7px blue;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+  }
+`;
+
+export const ProfileImage = styled(Image)`
+  object-fit: 'cover';
+  object-position: 'center';
+  &:hover {
+    opacity: 0.3;
+  }
 `;
 
 export const IntroductionBox = styled(Vertical)`
-  align-items: center;
   gap: 2px;
 `;
 

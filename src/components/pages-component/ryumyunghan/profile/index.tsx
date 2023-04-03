@@ -1,11 +1,12 @@
-import Image from 'next/image';
 import React from 'react';
+
 import {
   EmailBox,
   IntroduceBox,
   IntroductionBox,
   NameBox,
   ProfileContainer,
+  ProfileImage,
   ProfileImageContainer,
 } from './style';
 
@@ -19,12 +20,7 @@ const Profile = ({ name, email, comment }: Props): React.ReactElement => {
   return (
     <ProfileContainer>
       <ProfileImageContainer>
-        <Image
-          src="/images/profile.jpeg"
-          alt="사진"
-          fill
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-        />
+        <ProfileImage src="/images/profile.jpeg" alt="profile_image.jpeg" fill />
       </ProfileImageContainer>
       <IntroductionBox>
         <IntroduceBox>{comment} </IntroduceBox>
