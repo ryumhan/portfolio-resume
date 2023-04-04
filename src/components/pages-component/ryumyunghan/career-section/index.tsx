@@ -24,16 +24,17 @@ interface Props {
 }
 
 const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => {
-  const [onCareerHover, setCareerHover] = useState<number>(0);
+  const [onHover, setHover] = useState<number[]>([]);
 
-  const [onSkillHover, setSkillHover] = useState<number[]>([]);
-
-  const handleUpdateCareerHover = useCallback((list: number) => {
-    setCareerHover(list);
+  const handleUpdateHoverList = useCallback((list: number[]) => {
+    setHover(list);
   }, []);
 
-  const handleUpdateSkillHover = useCallback((list: number[]) => {
-    setSkillHover(list);
+  const handleAppendHoverList = useCallback((item: number) => {
+    setHover((list) => {
+      const newList = list.includes(item) ? list : list.concat(item);
+      return newList;
+    });
   }, []);
 
   return (
@@ -52,18 +53,19 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                     size={company.duration ? company.duration * YEAR_WEIGHT : 150}
                     descripton={company.description}
                     key={company.name}
-                    relation={onSkillHover?.includes(company.relation) ? company.relation : 0}
+                    relation={onHover?.includes(company.relation) ? company.relation : 0}
                     onMouseEnter={() => {
-                      handleUpdateCareerHover(company.relation);
+                      handleUpdateHoverList([company.relation]);
+                      [];
                     }}
-                    onMouseOut={() => {
-                      handleUpdateCareerHover(0);
+                    onMouseLeave={() => {
+                      handleUpdateHoverList([]);
                     }}
                   >
                     {company.name}
                   </Circle>
                 )),
-              [careerPath, onSkillHover],
+              [careerPath, onHover],
             )}
           </CareerCircleContainer>
         </CenterContainer>
@@ -88,12 +90,20 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                             <SkillElementComponent
                               key={skill.skillName}
                               weight={skill.duration / skillSet.total}
-                              relation={skill.relations?.includes(onCareerHover) ? onCareerHover : 0}
+                              relation={
+                                onHover.filter((element) => {
+                                  return skill.relations?.includes(element);
+                                }).length
+                                  ? onHover.filter((element) => {
+                                      return skill.relations?.includes(element);
+                                    })[0]
+                                  : 0
+                              }
                               onMouseEnter={() => {
-                                handleUpdateSkillHover(skill.relations);
+                                handleUpdateHoverList(skill.relations);
                               }}
                               onMouseLeave={() => {
-                                handleUpdateSkillHover([]);
+                                handleUpdateHoverList([]);
                               }}
                             >
                               <TypoGraphy
@@ -118,7 +128,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                     </Horizontal>
                   );
                 }),
-              [skillSets, onCareerHover],
+              [skillSets, onHover],
             )}
           </SkillBarContainer>
         </CenterContainer>

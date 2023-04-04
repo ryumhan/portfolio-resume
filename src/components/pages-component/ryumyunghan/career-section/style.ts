@@ -107,6 +107,7 @@ export const SkillElementComponent = styled.div<SkillComponentProps>(({ weight, 
   justifyContent: 'center',
   border: `1px solid ${GlobalColor.contentsTone}`,
   position: 'relative',
+  transition: 'all ease 0.4s 0s',
 }));
 
 export const SkillElementContainer = styled.div`

@@ -63,7 +63,7 @@ export const SKILLSET_CONFIG: SkillSet[] = [
     title: 'Deployment',
     skillSet: [
       { skillName: 'Kubernetes', duration: 0.6, img: '/images/kubernetes-image.png', relations: [2] },
-      { skillName: 'Docker', duration: 0.6, img: '/images/docker-image.png', relations: [2] },
+      { skillName: 'Docker', duration: 0.6, img: '/images/docker-image.png', relations: [2, 3] },
     ],
   },
   {
