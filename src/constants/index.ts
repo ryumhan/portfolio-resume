@@ -88,9 +88,9 @@ export const SKILLSET_CONFIG: SkillSet[] = [
     skillSet: [
       { skillName: 'Kubernetes API Server', duration: 0.8, relations: [2] },
       { skillName: 'Public Transportation API', duration: 1, relations: [3] },
-      { skillName: 'Yarn Berry(PM)', duration: 0.5, relations: [3, 4] },
-      { skillName: 'NestJS(BE)', duration: 0.3, relations: [4] },
-      { skillName: 'GraphQL)', duration: 0.3, relations: [4] },
+      { skillName: 'Yarn Berry(PM)', duration: 0.5, relations: [3] },
+      { skillName: 'NestJS(BE)', duration: 0.3, relations: [] },
+      { skillName: 'GraphQL)', duration: 0.3, relations: [] },
     ],
   },
 ];

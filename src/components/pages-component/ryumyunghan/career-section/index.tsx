@@ -73,12 +73,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
           <TypoGraphy style={{ fontSize: '20px' }}>Skill</TypoGraphy>
         </SectionTitle>
         <CenterContainer>
-          <SkillBarContainer
-            gap="25px"
-            onMouseEnter={() => {
-              handleUpdateSkillHover([]);
-            }}
-          >
+          <SkillBarContainer gap="25px">
             {useMemo(
               () =>
                 skillSets.map((skillSet) => {
@@ -97,13 +92,15 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                               onMouseEnter={() => {
                                 handleUpdateSkillHover(skill.relations);
                               }}
+                              onMouseLeave={() => {
+                                handleUpdateSkillHover([]);
+                              }}
                             >
                               <TypoGraphy
                                 style={{
                                   fontSize: '10px',
                                   fontWeight: 'bold',
                                   color: 'black',
-                                  zIndex: 1,
                                   overflow: 'hidden',
                                 }}
                               >
