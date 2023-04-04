@@ -30,13 +30,6 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
     setHover(list);
   }, []);
 
-  const handleAppendHoverList = useCallback((item: number) => {
-    setHover((list) => {
-      const newList = list.includes(item) ? list : list.concat(item);
-      return newList;
-    });
-  }, []);
-
   return (
     <Container gap="140px">
       <SectionWrapper>
