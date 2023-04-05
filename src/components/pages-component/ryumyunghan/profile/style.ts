@@ -3,8 +3,10 @@ import Image from 'next/image';
 import { GlobalColor, Vertical } from '@/components/common-style';
 
 export const ProfileContainer = styled(Vertical)`
-  margin: auto;
+  justify-content: center;
+  align-items: center;
   gap: 100px;
+  height: 100%;
 `;
 
 export const ProfileImageContainer = styled.div`
@@ -36,7 +38,7 @@ export const ProfileImage = styled(Image)`
 `;
 
 export const IntroductionBox = styled(Vertical)`
-  gap: 2px;
+  gap: 6px;
 `;
 
 export const NameBox = styled.div``;

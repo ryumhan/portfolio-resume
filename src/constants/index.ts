@@ -6,7 +6,8 @@ export const MENU_CONFIG = ['Ryu MyungHan', 'Career', 'Project', 'Education'];
 export const INTRODUCTION_CONFIG = {
   name: '류명한',
   email: 'ryum7han@gmail.com',
-  comment: '호기심이 많은 개발자 류명한 입니다.',
+  comment: '호기심이 많은 FE 개발자 류명한 입니다.',
+  hobby: '축구, 영화보기, 글쓰기',
 };
 
 export const CAREER_PATH: Company[] = [
