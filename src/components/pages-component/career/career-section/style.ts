@@ -21,11 +21,14 @@ interface SkillComponentProps {
 
 export const Container = styled(Vertical)`
   height: 100%;
-  padding: 10px;
+  padding: 5% 25%;
+  margin: auto;
 `;
 
 export const SectionWrapper = styled(Vertical)`
   gap: 30px;
+  height: 100%;
+  width: 100%;
 `;
 
 export const SectionTitle = styled.div``;
@@ -33,7 +36,8 @@ export const SectionTitle = styled.div``;
 export const CareerCircleContainer = styled(Horizontal)`
   justify-content: space-between;
   position: relative;
-  width: 80%;
+  padding: 20px;
+  width: 100%;
 
   ::before {
     // 다음 자식 전
@@ -41,10 +45,10 @@ export const CareerCircleContainer = styled(Horizontal)`
     background-color: ${lineBorderFill};
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 20px;
     transform: translateY(-50%);
     height: 3px;
-    width: 100%;
+    width: calc(100% - 40px);
   }
 `;
 
@@ -83,7 +87,7 @@ export const SkillBarContainer = styled(Vertical)`
   align-items: center;
   padding: 20px;
   height: 100%;
-  width: 85%;
+  width: 100%;
 `;
 
 export const SkillBarWrapper = styled(Horizontal)`
@@ -117,7 +121,8 @@ export const SkillElementContainer = styled.div`
   border-radius: 50%;
   width: 23px;
   height: 23px;
-  opacity: 0.5;
+  opacity: 0.3;
+  transform: translateX(50%);
 `;
 
 export const SkillElementImage = styled(Image)`

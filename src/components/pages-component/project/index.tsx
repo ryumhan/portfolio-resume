@@ -1,4 +1,6 @@
 import { MutableRefObject } from 'react';
+import { PROJECT_CONFIG } from '@/constants';
+import PortFolioStore from './port-folio-store';
 import { Container } from './style';
 
 interface Props {
@@ -6,7 +8,11 @@ interface Props {
 }
 
 const Project = ({ proRef }: Props): React.ReactElement => {
-  return <Container ref={proRef}>Project</Container>;
+  return (
+    <Container ref={proRef}>
+      <PortFolioStore projects={PROJECT_CONFIG} />
+    </Container>
+  );
 };
 
 export default Project;

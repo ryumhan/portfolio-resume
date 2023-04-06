@@ -32,6 +32,10 @@ export const CenterContainer = styled(Horizontal)`
   justify-content: center;
 `;
 
+export const PaddingContainer = styled.div`
+  padding: 24px;
+`;
+
 export const TypoGraphy = styled.span`
   font-family: Georgia, 'Times New Roman', Times, serif;
 `;

@@ -13,9 +13,9 @@ export const ProfileImageContainer = styled.div`
   position: relative;
   overflow: hidden;
   width: 350px;
-  height: 460px;
+  height: 440px;
   border-radius: 50%;
-  border: solid 7px ${GlobalColor.contentsTone};
+  /* border: solid 7px ${GlobalColor.contentsTone}; */
   cursor: pointer;
   transition: ease 0.2s;
 
@@ -32,6 +32,7 @@ export const ProfileImageContainer = styled.div`
 export const ProfileImage = styled(Image)`
   object-fit: 'cover';
   object-position: 'center';
+  filter: opacity(0.6) drop-shadow(0 0 0 #828282);
   &:hover {
     opacity: 0.3;
   }

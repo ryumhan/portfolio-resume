@@ -31,7 +31,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
   }, []);
 
   return (
-    <Container gap="140px">
+    <Container gap="150px">
       <SectionWrapper>
         <SectionTitle>
           <TypoGraphy style={{ fontSize: '20px' }}>Career</TypoGraphy>
@@ -68,7 +68,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
           <TypoGraphy style={{ fontSize: '20px' }}>Skill</TypoGraphy>
         </SectionTitle>
         <CenterContainer>
-          <SkillBarContainer gap="25px">
+          <SkillBarContainer gap="40px">
             {useMemo(
               () =>
                 skillSets.map((skillSet) => {
@@ -83,6 +83,12 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                             <SkillElementComponent
                               key={skill.skillName}
                               weight={skill.duration / skillSet.total}
+                              onMouseEnter={() => {
+                                handleUpdateHoverList(skill.relations);
+                              }}
+                              onMouseLeave={() => {
+                                handleUpdateHoverList([]);
+                              }}
                               relation={
                                 onHover.filter((element) => {
                                   return skill.relations?.includes(element);
@@ -92,12 +98,6 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                                     })[0]
                                   : 0
                               }
-                              onMouseEnter={() => {
-                                handleUpdateHoverList(skill.relations);
-                              }}
-                              onMouseLeave={() => {
-                                handleUpdateHoverList([]);
-                              }}
                             >
                               <TypoGraphy
                                 style={{
