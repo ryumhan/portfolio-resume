@@ -97,7 +97,6 @@ export const SkillBarWrapper = styled(Horizontal)`
   border-radius: 5px;
   padding: 3px;
   width: 80%;
-  cursor: pointer;
 `;
 
 export const SkillTitle = styled.div``;

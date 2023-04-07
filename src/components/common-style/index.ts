@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 interface FlexProps {
   gap?: string;
   justifyContent?: 'space-between' | 'center' | 'end' | 'left' | 'right' | 'flex-start' | 'flex-end';
+  alignItems?: 'center';
 }
 
 export const GlobalColor = {
@@ -18,11 +19,12 @@ export const Horizontal = styled.div<FlexProps>(({ gap, justifyContent }) => ({
   justifyContent,
 }));
 
-export const Vertical = styled.div<FlexProps>(({ gap, justifyContent }) => ({
+export const Vertical = styled.div<FlexProps>(({ gap, justifyContent, alignItems }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap,
   justifyContent,
+  alignItems,
 }));
 
 export const CenterContainer = styled(Horizontal)`

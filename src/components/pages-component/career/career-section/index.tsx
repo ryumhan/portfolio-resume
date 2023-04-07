@@ -83,12 +83,6 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                             <SkillElementComponent
                               key={skill.skillName}
                               weight={skill.duration / skillSet.total}
-                              onMouseEnter={() => {
-                                handleUpdateHoverList(skill.relations);
-                              }}
-                              onMouseLeave={() => {
-                                handleUpdateHoverList([]);
-                              }}
                               relation={
                                 onHover.filter((element) => {
                                   return skill.relations?.includes(element);

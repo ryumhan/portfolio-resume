@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { GlobalColor, Horizontal, Vertical } from '@/components/common-style';
 
 interface StoreWrapperProps {
-  clicked: boolean;
+  selected: boolean;
 }
 
 const ProjectImageStyle = {
@@ -25,16 +25,16 @@ export const StoreContainer = styled(Horizontal)`
   padding-top: 20px;
 `;
 
-export const StoreWrapper = styled.div<StoreWrapperProps>(({ clicked }) => ({
-  width: clicked ? '65px' : '130px',
-  height: clicked ? '150px' : '300px',
+export const StoreWrapper = styled.div<StoreWrapperProps>(() => ({
+  width: '80px',
+  height: '300px',
   position: 'relative',
   borderRadius: '10px',
   border: `solid 2px ${GlobalColor.contentsTone}`,
   overflow: 'hidden',
   cursor: 'pointer',
 
-  transition: '0.2s',
+  transition: '0.3s',
 
   ':hover': ProjectImageStyle,
 }));
@@ -53,7 +53,7 @@ export const StoreTitle = styled.div`
 
 export const StoreDetailContainer = styled(Horizontal)`
   width: 100%;
-  padding: 0% 15%;
+  padding: 0% 17%;
 `;
 
 export const ImageContainer = styled.div`
@@ -68,7 +68,9 @@ export const ImageContainer = styled.div`
 export const DetailTitle = styled.div``;
 
 export const DetailContents = styled.div`
-  width: 460px;
+  width: 500px;
+  display: flex;
+  line-height: normal;
 `;
 
 export const DetailImage = styled.div``;
