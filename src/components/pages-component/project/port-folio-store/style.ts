@@ -6,6 +6,10 @@ interface StoreWrapperProps {
   selected: boolean;
 }
 
+interface ImageContainerProps {
+  kiosk: boolean;
+}
+
 const ProjectImageStyle = {
   width: '400px',
   height: '300px',
@@ -18,11 +22,25 @@ export const Container = styled(Vertical)`
   padding: 50px;
 `;
 
+export const ProjectContainer = styled.div(() => ({
+  backgroundColor: GlobalColor.contentsTone,
+  width: '100px',
+  height: '50px',
+  borderRadius: '50%',
+  margin: 'auto',
+  transition: '0.4s',
+  cursor: 'pointer',
+
+  ':hover': {
+    width: '300px',
+    height: '50px',
+    borderRadius: '20px',
+  },
+}));
+
 export const StoreContainer = styled(Horizontal)`
   gap: 10px;
   justify-content: center;
-  align-items: center;
-  padding-top: 20px;
 `;
 
 export const StoreWrapper = styled.div<StoreWrapperProps>(() => ({
@@ -33,7 +51,6 @@ export const StoreWrapper = styled.div<StoreWrapperProps>(() => ({
   border: `solid 2px ${GlobalColor.contentsTone}`,
   overflow: 'hidden',
   cursor: 'pointer',
-
   transition: '0.3s',
 
   ':hover': ProjectImageStyle,
@@ -56,14 +73,16 @@ export const StoreDetailContainer = styled(Horizontal)`
   padding: 0% 17%;
 `;
 
-export const ImageContainer = styled.div`
-  position: relative;
-  border: solid 2px ${GlobalColor.contentsTone};
-  border-radius: 10px;
-  overflow: hidden;
-
-  ${ProjectImageStyle}
-`;
+export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
+  margin: '10px',
+  position: 'relative',
+  border: `solid 2px ${GlobalColor.contentsTone}`,
+  bordrRadius: '10px',
+  overflow: 'hidden',
+  width: kiosk ? '350px' : '500px',
+  height: kiosk ? '600px' : '300px',
+  opacity: '1',
+}));
 
 export const DetailTitle = styled.div``;
 

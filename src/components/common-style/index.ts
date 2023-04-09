@@ -32,6 +32,7 @@ export const CenterContainer = styled(Horizontal)`
   align-items: 'center';
   flex-direction: 'row';
   justify-content: center;
+  height: 100%;
 `;
 
 export const PaddingContainer = styled.div`

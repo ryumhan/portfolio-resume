@@ -21,12 +21,11 @@ interface SkillComponentProps {
 
 export const Container = styled(Vertical)`
   height: 100%;
-  padding: 5% 25%;
-  margin: auto;
+  padding: 20px 24%;
 `;
 
 export const SectionWrapper = styled(Vertical)`
-  gap: 30px;
+  gap: 20px;
   height: 100%;
   width: 100%;
 `;
@@ -63,7 +62,7 @@ export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, rel
   border: '2px solid',
   transition: 'all ease 0.4s 0s',
   borderColor: isActive ? lineBorderFill : lineBorderEmpty,
-  borderRadius: '45%',
+  borderRadius: '50%',
   position: 'relative',
   zIndex: 1,
 

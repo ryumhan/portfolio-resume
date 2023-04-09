@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Project } from '@/model/project';
-import { Container, StoreContainer, StoreImage, StoreTitle, StoreWrapper } from './style';
+import { Container, ProjectContainer, StoreContainer, StoreImage, StoreTitle, StoreWrapper } from './style';
 
-import { TypoGraphy, Vertical } from '@/components/common-style';
+import { CenterContainer, TypoGraphy, Vertical } from '@/components/common-style';
 import StoreDetail from './storeDetail';
 
 interface Props {
@@ -14,31 +14,35 @@ const PortFolioStore = ({ projects }: Props): React.ReactElement => {
 
   return (
     <Container>
-      <Vertical gap="130px">
-        <StoreContainer>
+      <Vertical gap="50px">
+        <ProjectContainer>
+          <CenterContainer>
+            <TypoGraphy style={{ fontSize: '24px' }}>프로젝트</TypoGraphy>
+          </CenterContainer>
+        </ProjectContainer>
+
+        <StoreContainer style={{ display: -1 !== selected ? 'none' : '' }}>
           {useMemo(() => {
-            return projects
-              .filter((project, index) => {
-                return selected === -1 ? true : index !== selected;
-              })
-              .map((project, index) => {
-                return (
-                  <StoreWrapper
-                    key={project.title + index}
-                    selected={selected !== -1}
-                    onClick={() => {
-                      setSelect(index);
-                    }}
-                  >
-                    <StoreImage src={project.img[0]} alt={project.img[0]} fill />
-                    <StoreTitle>
-                      <TypoGraphy>{project.title}</TypoGraphy>
-                    </StoreTitle>
-                  </StoreWrapper>
-                );
-              });
+            return projects.map((project, index) => {
+              return (
+                <StoreWrapper
+                  style={{ display: index === selected ? 'none' : '' }}
+                  key={project.title + index}
+                  selected={selected !== -1}
+                  onClick={() => {
+                    setSelect(index);
+                  }}
+                >
+                  <StoreImage src={project.img[0]} alt={project.img[0]} fill />
+                  <StoreTitle>
+                    <TypoGraphy>{project.title}</TypoGraphy>
+                  </StoreTitle>
+                </StoreWrapper>
+              );
+            });
           }, [projects, selected])}
         </StoreContainer>
+
         {/* Detail appear only clicked */}
         {selected !== -1 && <StoreDetail selected={projects[selected]} />}
       </Vertical>

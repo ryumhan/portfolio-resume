@@ -5,5 +5,6 @@ export interface Project {
   descriptions: string[];
   contributions: string[];
   img: string[];
+  imgType?: 'kiosk';
   url?: string;
 }

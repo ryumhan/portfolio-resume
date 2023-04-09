@@ -7,6 +7,7 @@ import {
   PaddingContainer,
 } from '@/components/common-style';
 import { Project } from '@/model/project';
+import { useEffect, useState } from 'react';
 import {
   StoreDetailContainer,
   DetailTitle,
@@ -21,83 +22,119 @@ interface Props {
 }
 
 const StoreDetail = ({ selected }: Props): React.ReactElement => {
+  const [image, setImage] = useState<string>();
+
   const handleViewOpen = (url: string | undefined) => {
     if (typeof window !== 'undefined') window.open(url, '_blank', 'noopener, noreferrer');
   };
 
+  const initImage = () => {
+    setImage(selected.img[0] || '');
+  };
+
+  const imageTimer = () => {
+    let idx = 0;
+    let timeInst;
+
+    const max = selected.img.length;
+    if (max) {
+      timeInst = setInterval(() => {
+        const next = ++idx % max;
+        setImage(selected.img[next]);
+      }, 3 * 1000);
+    }
+
+    return timeInst;
+  };
+
+  useEffect(() => {
+    initImage();
+
+    const timeInst = imageTimer();
+    return () => {
+      clearInterval(timeInst);
+    };
+  }, [selected]);
+
   return (
-    <StoreDetailContainer>
-      <Horizontal justifyContent="space-between" style={{ width: '100%' }}>
-        <Vertical gap="10px" style={{ width: '550px' }}>
-          <DetailTitle>
-            <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>
-              {selected.title}
-            </TypoGraphy>
-            <br />
-            <br />
-            <CenterContainer>
-              <TypoGraphy style={{ fontSize: '20px', color: GlobalColor.contentsTone }}>
-                {selected.skill.join(', ')}
-              </TypoGraphy>
-            </CenterContainer>
-          </DetailTitle>
+    <StoreDetailContainer justifyContent="space-between" style={{ width: '100%' }}>
+      <Vertical style={{ width: '100%' }}>
+        <DetailTitle>
+          <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>
+            {selected.title}
+          </TypoGraphy>
+        </DetailTitle>
 
-          <PaddingContainer>
-            <Vertical gap="20px" alignItems="center">
-              <ImageContainer>
-                <StoreImage src={selected.img[0]} alt={selected.img[0]} fill />
-              </ImageContainer>
-
-              {selected.url && (
-                <GotoUrl
-                  onClick={() => {
-                    if (typeof selected?.url !== 'undefined') handleViewOpen(selected.url);
-                  }}
-                >
-                  <TypoGraphy style={{ fontSize: '20px', color: 'white' }}>View</TypoGraphy>
-                </GotoUrl>
-              )}
-            </Vertical>
-          </PaddingContainer>
-        </Vertical>
-
-        <Vertical>
-          <DetailTitle>
-            <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>역할</TypoGraphy>
-            <PaddingContainer>{selected.role}</PaddingContainer>
-          </DetailTitle>
-
-          <DetailTitle>
-            <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>서비스</TypoGraphy>
+        <Horizontal justifyContent="space-between" style={{ height: '100%' }}>
+          {/* left side */}
+          <Vertical>
             <PaddingContainer>
-              <Vertical gap="3px">
-                {selected.descriptions.map((desc, idx) => {
-                  return (
-                    <DetailContents key={desc[0] + idx}>
-                      <TypoGraphy>* {desc}</TypoGraphy>
-                    </DetailContents>
-                  );
-                })}
+              <Vertical gap="10px">
+                <DetailTitle>
+                  <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
+                    : {selected.role}
+                  </TypoGraphy>
+                </DetailTitle>
+
+                <DetailTitle>
+                  <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
+                    : {selected.skill.join(', ')}
+                  </TypoGraphy>
+                </DetailTitle>
+
+                <ImageContainer kiosk={selected.imgType === 'kiosk'}>
+                  {image && <StoreImage src={image} alt={selected.img[0]} fill />}
+                </ImageContainer>
+
+                <CenterContainer>
+                  {selected.url && (
+                    <GotoUrl
+                      onClick={() => {
+                        if (typeof selected?.url !== 'undefined') handleViewOpen(selected.url);
+                      }}
+                    >
+                      <TypoGraphy style={{ fontSize: '20px', color: 'white' }}>View</TypoGraphy>
+                    </GotoUrl>
+                  )}
+                </CenterContainer>
               </Vertical>
             </PaddingContainer>
-          </DetailTitle>
+          </Vertical>
 
-          <DetailTitle>
-            <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>기여점</TypoGraphy>
-            <PaddingContainer>
-              <Vertical gap="3px">
-                {selected.contributions.map((contri, idx) => {
-                  return (
-                    <DetailContents key={contri[0] + idx}>
-                      <TypoGraphy>* {contri}</TypoGraphy>;
-                    </DetailContents>
-                  );
-                })}
-              </Vertical>
-            </PaddingContainer>
-          </DetailTitle>
-        </Vertical>
-      </Horizontal>
+          {/* right side */}
+          <Vertical gap="20px">
+            <DetailTitle>
+              <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>주요 기능</TypoGraphy>
+              <PaddingContainer>
+                <Vertical gap="3px">
+                  {selected.descriptions.map((desc, idx) => {
+                    return (
+                      <DetailContents key={desc[0] + idx}>
+                        <TypoGraphy>- {desc}</TypoGraphy>
+                      </DetailContents>
+                    );
+                  })}
+                </Vertical>
+              </PaddingContainer>
+            </DetailTitle>
+
+            <DetailTitle>
+              <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>기여점</TypoGraphy>
+              <PaddingContainer>
+                <Vertical gap="3px">
+                  {selected.contributions.map((contri, idx) => {
+                    return (
+                      <DetailContents key={contri[0] + idx}>
+                        <TypoGraphy>- {contri}</TypoGraphy>
+                      </DetailContents>
+                    );
+                  })}
+                </Vertical>
+              </PaddingContainer>
+            </DetailTitle>
+          </Vertical>
+        </Horizontal>
+      </Vertical>
     </StoreDetailContainer>
   );
 };

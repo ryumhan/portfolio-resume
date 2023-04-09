@@ -95,7 +95,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                             >
                               <TypoGraphy
                                 style={{
-                                  fontSize: '10px',
+                                  fontSize: '12px',
                                   fontWeight: 'bold',
                                   color: 'black',
                                   overflow: 'hidden',
