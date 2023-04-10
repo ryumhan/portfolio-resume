@@ -12,10 +12,10 @@ const RyuMyungHan = ({ ryuRef }: Props): React.ReactElement => {
   return (
     <Container ref={ryuRef}>
       <Profile
-        name={INTRODUCTION_CONFIG.name}
+        education={INTRODUCTION_CONFIG.education}
         email={INTRODUCTION_CONFIG.email}
         comment={INTRODUCTION_CONFIG.comment}
-        hobby={INTRODUCTION_CONFIG.hobby}
+        phone={INTRODUCTION_CONFIG.phone}
       />
     </Container>
   );

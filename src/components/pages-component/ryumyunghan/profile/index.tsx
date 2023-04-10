@@ -1,24 +1,26 @@
-import React from 'react';
-import { TypoGraphy } from '@/components/common-style';
+import React, { useMemo } from 'react';
+import { GlobalColor, PaddingContainer, TypoGraphy, Vertical } from '@/components/common-style';
 
 import {
+  ContactIconContainer,
+  ContactImage,
   EmailBox,
   IntroduceBox,
   IntroductionBox,
-  NameBox,
+  PhoneBox,
   ProfileContainer,
   ProfileImage,
   ProfileImageContainer,
 } from './style';
 
 interface Props {
-  name: string;
+  education: {};
   email: string;
   comment: string;
-  hobby: string;
+  phone: string;
 }
 
-const Profile = ({ name, email, comment, hobby }: Props): React.ReactElement => {
+const Profile = ({ education, email, comment, phone }: Props): React.ReactElement => {
   return (
     <ProfileContainer>
       <IntroduceBox>
@@ -28,15 +30,23 @@ const Profile = ({ name, email, comment, hobby }: Props): React.ReactElement => 
         <ProfileImage src="/images/profile.jpeg" alt="profile_image.jpeg" fill />
       </ProfileImageContainer>
       <IntroductionBox>
-        <NameBox>
-          <TypoGraphy style={{ fontSize: '25px' }}>{name}</TypoGraphy>
-        </NameBox>
-        <NameBox>
-          <TypoGraphy style={{ fontSize: '25px' }}>{hobby}</TypoGraphy>
-        </NameBox>
-        <EmailBox>
-          <TypoGraphy style={{ fontSize: '25px' }}>{email}</TypoGraphy>
-        </EmailBox>
+        <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.title }}>Contact</TypoGraphy>
+        <PaddingContainer>
+          <Vertical gap="12px">
+            <PhoneBox gap="10px">
+              <ContactIconContainer>
+                <ContactImage src={'/images/phone.png'} fill alt={'/images/phone.png'}></ContactImage>
+              </ContactIconContainer>
+              <TypoGraphy style={{ fontSize: '22px', color: GlobalColor.title }}>{phone}</TypoGraphy>
+            </PhoneBox>
+            <EmailBox gap="10px">
+              <ContactIconContainer>
+                <ContactImage src={'/images/email.jpeg'} fill alt={'/images/email.jpeg'}></ContactImage>
+              </ContactIconContainer>
+              <TypoGraphy style={{ fontSize: '22px', color: GlobalColor.title }}>{email}</TypoGraphy>
+            </EmailBox>
+          </Vertical>
+        </PaddingContainer>
       </IntroductionBox>
     </ProfileContainer>
   );

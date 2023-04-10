@@ -58,7 +58,7 @@ export const StoreWrapper = styled.div<StoreWrapperProps>(() => ({
 
 export const StoreImage = styled(Image)`
   object-fit: cover;
-  object-position: 'center';
+  object-position: left;
 `;
 
 export const StoreTitle = styled.div`
@@ -79,8 +79,8 @@ export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
   border: `solid 2px ${GlobalColor.contentsTone}`,
   bordrRadius: '10px',
   overflow: 'hidden',
-  width: kiosk ? '350px' : '500px',
-  height: kiosk ? '600px' : '300px',
+  width: kiosk ? '350px' : '550px',
+  height: kiosk ? '600px' : '380px',
   opacity: '1',
 }));
 

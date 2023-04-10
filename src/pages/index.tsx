@@ -13,7 +13,7 @@ import { MENU_CONFIG } from '@/constants';
 const PageConatiner = styled.div`
   overflow: auto;
   scroll-snap-type: y mandatory; /* 부모 적용 */
-  height: calc(100% - 50px);
+  height: calc(100% - 70px);
 `;
 
 const Home: NextPage = () => {
@@ -38,7 +38,6 @@ const Home: NextPage = () => {
         <RyuMyungHan ryuRef={ryuRef} />
         <Career carRef={carRef} />
         <Project proRef={proRef} />
-        <Education eduRef={eduRef} />
       </PageConatiner>
     </Layout>
   );

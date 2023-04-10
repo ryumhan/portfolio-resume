@@ -1,8 +1,15 @@
 import type { AppProps } from 'next/app';
-import '@/styles/globals.css';
+
+import { Global } from '@emotion/react';
+import GlobalStyle from '@/styles/global-styles';
 
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Global styles={GlobalStyle} />
+      <Component {...pageProps} />;
+    </>
+  );
 };
 
 export default App;

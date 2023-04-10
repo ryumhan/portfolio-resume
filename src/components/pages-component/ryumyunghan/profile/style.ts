@@ -1,21 +1,20 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { GlobalColor, Vertical } from '@/components/common-style';
+import { GlobalColor, Horizontal, Vertical } from '@/components/common-style';
 
 export const ProfileContainer = styled(Vertical)`
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 70px;
   height: 100%;
 `;
 
 export const ProfileImageContainer = styled.div`
   position: relative;
   overflow: hidden;
-  width: 350px;
-  height: 440px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  /* border: solid 7px ${GlobalColor.contentsTone}; */
   cursor: pointer;
   transition: ease 0.2s;
 
@@ -44,9 +43,24 @@ export const IntroductionBox = styled(Vertical)`
 
 export const NameBox = styled.div``;
 
-export const EmailBox = styled.div``;
+export const EmailBox = styled(Horizontal)``;
+
+export const PhoneBox = styled(Horizontal)``;
 
 export const IntroduceBox = styled.div`
   align-items: center;
   gap: 2px;
+`;
+
+export const ContactIconContainer = styled.div`
+  position: relative;
+  width: 24px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+`;
+
+export const ContactImage = styled(Image)`
+  object-fit: 'cover';
+  object-position: 'center';
 `;

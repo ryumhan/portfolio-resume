@@ -2,6 +2,8 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Company } from '@/model/company';
 import {
   CareerCircleContainer,
+  CareerDurationContainer,
+  CareerTotal,
   Circle,
   Container,
   SectionTitle,
@@ -13,7 +15,14 @@ import {
   SkillElementImage,
   SkillTitle,
 } from './style';
-import { CenterContainer, Horizontal, TypoGraphy } from '@/components/common-style';
+import {
+  ArrowDiv,
+  CenterContainer,
+  GlobalColor,
+  Horizontal,
+  TypoGraphy,
+  Vertical,
+} from '@/components/common-style';
 import { SkillSet } from '@/model/skill';
 
 const YEAR_WEIGHT = 55;
@@ -31,12 +40,30 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
   }, []);
 
   return (
-    <Container gap="150px">
+    <Container gap="118px">
+      {/* upper wrapper */}
       <SectionWrapper>
         <SectionTitle>
-          <TypoGraphy style={{ fontSize: '20px' }}>Career</TypoGraphy>
+          <TypoGraphy style={{ fontSize: '20px', color: GlobalColor.title, fontWeight: '500' }}>
+            Experience
+            <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.title }}>
+              (
+              {
+                careerPath.reduce((prev, next) => {
+                  return {
+                    name: 'total',
+                    duration: prev.duration + next.duration,
+                    description: '',
+                    relation: 0,
+                  };
+                }).duration
+              }
+              년)
+            </TypoGraphy>
+          </TypoGraphy>
         </SectionTitle>
-        <CenterContainer>
+
+        <CenterContainer style={{ padding: '20px', color: GlobalColor.contentsTone }}>
           <CareerCircleContainer>
             {useMemo(
               () =>
@@ -63,10 +90,9 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
           </CareerCircleContainer>
         </CenterContainer>
       </SectionWrapper>
+
+      {/* bottom wrapper */}
       <SectionWrapper>
-        <SectionTitle>
-          <TypoGraphy style={{ fontSize: '20px' }}>Skill</TypoGraphy>
-        </SectionTitle>
         <CenterContainer>
           <SkillBarContainer gap="40px">
             {useMemo(
@@ -75,7 +101,9 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                   return (
                     <Horizontal key={skillSet.title} justifyContent="space-between" style={{ width: '100%' }}>
                       <SkillTitle>
-                        <TypoGraphy>{skillSet.title}</TypoGraphy>
+                        <TypoGraphy style={{ fontSize: '16px', color: GlobalColor.contentsTone }}>
+                          {skillSet.title}
+                        </TypoGraphy>
                       </SkillTitle>
                       <SkillBarWrapper>
                         {skillSet.skillSet.map((skill) => {
@@ -95,10 +123,10 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
                             >
                               <TypoGraphy
                                 style={{
-                                  fontSize: '12px',
-                                  fontWeight: 'bold',
-                                  color: 'black',
+                                  fontSize: '13px',
+                                  fontWeight: '500',
                                   overflow: 'hidden',
+                                  color: GlobalColor.text,
                                 }}
                               >
                                 {skill.skillName}

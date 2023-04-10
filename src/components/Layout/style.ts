@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Horizontal, Vertical } from '@/components/common-style';
+import { GlobalColor, Horizontal, Vertical } from '@/components/common-style';
 
 export const LayOutContainer = styled(Vertical)`
   height: 100%;
-  padding: 15px;
+  padding: 20px 50px;
+  color: ${GlobalColor.title};
 `;
 
 export const NavMenu = styled(Horizontal)`

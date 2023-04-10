@@ -21,21 +21,34 @@ interface SkillComponentProps {
 
 export const Container = styled(Vertical)`
   height: 100%;
-  padding: 20px 24%;
+  padding: 20px 20%;
 `;
 
 export const SectionWrapper = styled(Vertical)`
-  gap: 20px;
+  gap: 24px;
   height: 100%;
   width: 100%;
 `;
 
 export const SectionTitle = styled.div``;
 
+export const CareerDurationContainer = styled(Horizontal)`
+  height: 40px;
+`;
+
+export const CareerTotal = styled.div(() => ({
+  width: '100%',
+  paddingBottom: '10px',
+  display: 'flex',
+  justifyContent: 'center',
+  borderBottom: `1px dashed ${lineBorderFill}`,
+  position: 'relative',
+  transform: 'translateY(-47%)',
+}));
+
 export const CareerCircleContainer = styled(Horizontal)`
   justify-content: space-between;
   position: relative;
-  padding: 20px;
   width: 100%;
 
   ::before {
@@ -46,7 +59,7 @@ export const CareerCircleContainer = styled(Horizontal)`
     top: 50%;
     left: 20px;
     transform: translateY(-50%);
-    height: 3px;
+    height: 2px;
     width: calc(100% - 40px);
   }
 `;
@@ -59,7 +72,7 @@ export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, rel
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  border: '2px solid',
+  border: '1.5px solid',
   transition: 'all ease 0.4s 0s',
   borderColor: isActive ? lineBorderFill : lineBorderEmpty,
   borderRadius: '50%',
@@ -71,8 +84,10 @@ export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, rel
     top: `${0 + size / 2 + 120}px`,
     left: '0',
     position: 'absolute',
-    width: '100px',
-    fontSize: '14px',
+    width: '200px',
+    height: '50px',
+    fontSize: '15px',
+    fontWeight: '400',
     color: GlobalColor.contentsTone,
   },
 
@@ -90,7 +105,7 @@ export const SkillBarContainer = styled(Vertical)`
 `;
 
 export const SkillBarWrapper = styled(Horizontal)`
-  height: 40px;
+  height: 42px;
   background-color: #fff;
   border: solid 2px ${GlobalColor.generalTone};
   border-radius: 5px;
@@ -119,8 +134,7 @@ export const SkillElementContainer = styled.div`
   border-radius: 50%;
   width: 23px;
   height: 23px;
-  opacity: 0.3;
-  transform: translateX(50%);
+  transform: translateY(-150%);
 `;
 
 export const SkillElementImage = styled(Image)`

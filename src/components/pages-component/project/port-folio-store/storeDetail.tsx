@@ -6,6 +6,7 @@ import {
   CenterContainer,
   PaddingContainer,
 } from '@/components/common-style';
+
 import { Project } from '@/model/project';
 import { useEffect, useState } from 'react';
 import {
@@ -41,12 +42,13 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
       timeInst = setInterval(() => {
         const next = ++idx % max;
         setImage(selected.img[next]);
-      }, 3 * 1000);
+      }, 2.5 * 1000);
     }
 
     return timeInst;
   };
 
+  console.log(image);
   useEffect(() => {
     initImage();
 
@@ -58,7 +60,7 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
 
   return (
     <StoreDetailContainer justifyContent="space-between" style={{ width: '100%' }}>
-      <Vertical style={{ width: '100%' }}>
+      <Vertical style={{ width: '100%', height: '100%' }}>
         <DetailTitle>
           <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>
             {selected.title}
@@ -83,7 +85,7 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
                 </DetailTitle>
 
                 <ImageContainer kiosk={selected.imgType === 'kiosk'}>
-                  {image && <StoreImage src={image} alt={selected.img[0]} fill />}
+                  {image && <StoreImage src={image} alt={image} fill />}
                 </ImageContainer>
 
                 <CenterContainer>
@@ -102,7 +104,7 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
           </Vertical>
 
           {/* right side */}
-          <Vertical gap="20px">
+          <Vertical gap={'50px'}>
             <DetailTitle>
               <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>주요 기능</TypoGraphy>
               <PaddingContainer>
