@@ -70,7 +70,7 @@ export const StoreTitle = styled.div`
 
 export const StoreDetailContainer = styled(Horizontal)`
   width: 100%;
-  padding: 0% 17%;
+  padding: 0 10%;
 `;
 
 export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
@@ -79,7 +79,7 @@ export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
   border: `solid 2px ${GlobalColor.contentsTone}`,
   bordrRadius: '10px',
   overflow: 'hidden',
-  width: kiosk ? '350px' : '550px',
+  width: kiosk ? '350px' : '660px',
   height: kiosk ? '600px' : '380px',
   opacity: '1',
 }));
@@ -87,7 +87,7 @@ export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
 export const DetailTitle = styled.div``;
 
 export const DetailContents = styled.div`
-  width: 500px;
+  width: 600px;
   display: flex;
   line-height: normal;
 `;

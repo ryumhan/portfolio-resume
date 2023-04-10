@@ -65,55 +65,57 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
           <TypoGraphy style={{ fontSize: '24px', color: GlobalColor.contentsTone }}>
             {selected.title}
           </TypoGraphy>
+          <TypoGraphy style={{ fontSize: '20px', color: GlobalColor.contentsTone }}>
+            {selected.url ? `(${selected.url})` : ''}
+          </TypoGraphy>
         </DetailTitle>
 
         <Horizontal justifyContent="space-between" style={{ height: '100%' }}>
           {/* left side */}
-          <Vertical>
-            <PaddingContainer>
-              <Vertical gap="10px">
-                <DetailTitle>
-                  <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
-                    : {selected.role}
-                  </TypoGraphy>
-                </DetailTitle>
+          <Vertical gap="10px" style={{ height: '100%' }}>
+            <DetailTitle style={{ marginTop: '15px' }}>
+              <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
+                : {selected.role}
+              </TypoGraphy>
+            </DetailTitle>
 
-                <DetailTitle>
-                  <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
-                    : {selected.skill.join(', ')}
-                  </TypoGraphy>
-                </DetailTitle>
+            <DetailTitle>
+              <TypoGraphy style={{ fontSize: '15px', color: GlobalColor.contentsTone }}>
+                : {selected.skill.join(', ')}
+              </TypoGraphy>
+            </DetailTitle>
 
-                <ImageContainer kiosk={selected.imgType === 'kiosk'}>
-                  {image && <StoreImage src={image} alt={image} fill />}
-                </ImageContainer>
+            <ImageContainer kiosk={selected.imgType === 'kiosk'}>
+              {image && <StoreImage src={image} alt={image} fill />}
+            </ImageContainer>
 
-                <CenterContainer>
-                  {selected.url && (
-                    <GotoUrl
-                      onClick={() => {
-                        if (typeof selected?.url !== 'undefined') handleViewOpen(selected.url);
-                      }}
-                    >
-                      <TypoGraphy style={{ fontSize: '20px', color: 'white' }}>View</TypoGraphy>
-                    </GotoUrl>
-                  )}
-                </CenterContainer>
-              </Vertical>
-            </PaddingContainer>
+            <CenterContainer>
+              {selected.url && (
+                <GotoUrl
+                  onClick={() => {
+                    if (typeof selected?.url !== 'undefined') handleViewOpen(selected.url);
+                  }}
+                >
+                  <TypoGraphy style={{ fontSize: '20px', color: 'white' }}>View</TypoGraphy>
+                </GotoUrl>
+              )}
+            </CenterContainer>
           </Vertical>
 
           {/* right side */}
-          <Vertical gap={'50px'}>
+          <Vertical gap={'10px'}>
             <DetailTitle>
               <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>주요 기능</TypoGraphy>
               <PaddingContainer>
-                <Vertical gap="3px">
+                <Vertical gap="12px">
                   {selected.descriptions.map((desc, idx) => {
                     return (
-                      <DetailContents key={desc[0] + idx}>
-                        <TypoGraphy>- {desc}</TypoGraphy>
-                      </DetailContents>
+                      <Horizontal key={desc[0] + idx} gap={'10px'}>
+                        <TypoGraphy>-</TypoGraphy>
+                        <DetailContents>
+                          <TypoGraphy>{desc}</TypoGraphy>
+                        </DetailContents>
+                      </Horizontal>
                     );
                   })}
                 </Vertical>
@@ -123,12 +125,15 @@ const StoreDetail = ({ selected }: Props): React.ReactElement => {
             <DetailTitle>
               <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>기여점</TypoGraphy>
               <PaddingContainer>
-                <Vertical gap="3px">
+                <Vertical gap="12px">
                   {selected.contributions.map((contri, idx) => {
                     return (
-                      <DetailContents key={contri[0] + idx}>
-                        <TypoGraphy>- {contri}</TypoGraphy>
-                      </DetailContents>
+                      <Horizontal key={contri[0] + idx} gap={'10px'}>
+                        <TypoGraphy>-</TypoGraphy>
+                        <DetailContents>
+                          <TypoGraphy>{contri}</TypoGraphy>
+                        </DetailContents>
+                      </Horizontal>
                     );
                   })}
                 </Vertical>
