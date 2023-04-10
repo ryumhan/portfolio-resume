@@ -20,13 +20,11 @@ interface SkillComponentProps {
 }
 
 export const Container = styled(Vertical)`
-  height: 100%;
-  padding: 20px 20%;
+  padding: 50px 18%;
 `;
 
 export const SectionWrapper = styled(Vertical)`
   gap: 24px;
-  height: 100%;
   width: 100%;
 `;
 
@@ -66,9 +64,9 @@ export const CareerCircleContainer = styled(Horizontal)`
 
 export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, relation }) => ({
   cursor: 'pointer',
-  background: relation ? relationColor[relation] : '#fff',
   height: `${isActive ? size : 150}px`,
   width: `${isActive ? size : 150}px`,
+  background: relation ? relationColor[relation] : '#fff',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -83,8 +81,9 @@ export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, rel
     content: descripton,
     top: `${0 + size / 2 + 120}px`,
     left: '0',
+    textAlign: 'center',
     position: 'absolute',
-    width: '200px',
+    width: '220px',
     height: '50px',
     fontSize: '15px',
     fontWeight: '400',

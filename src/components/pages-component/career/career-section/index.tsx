@@ -40,7 +40,7 @@ const CareerSection = ({ careerPath, skillSets }: Props): React.ReactElement => 
   }, []);
 
   return (
-    <Container gap="118px">
+    <Container gap="120px">
       {/* upper wrapper */}
       <SectionWrapper>
         <SectionTitle>
