@@ -76,7 +76,7 @@ export const StoreContainer = styled(Horizontal)<StoreWrapperProps>(({ selected 
 }));
 
 export const StoreWrapper = styled.div<StoreWrapperProps>(({ selected, type }) => ({
-  width: '90px',
+  width: '94px',
   height: selected ? '0px' : '300px',
   position: 'relative',
   borderRadius: '10px',
@@ -103,6 +103,7 @@ export const StoreTitle = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  text-shadow: 3px 3px 5px ${GlobalColor.text};
 `;
 
 export const StoreDetailContainer = styled(Horizontal)`

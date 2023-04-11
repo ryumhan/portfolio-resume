@@ -10,7 +10,7 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:prettier/recommended",
-    "prettier",
+    "prettier"
   ],
   "settings": {
     "react": {
@@ -43,7 +43,7 @@
     "no-unused-expressions": "off",
     "comma-dangle": ["error", "always-multiline"],
     "consistent-return": "error", // return type 명시
-    "no-multiple-empty-lines": "warn", // 연속된 공백 금지
+    "no-multiple-empty-lines": "error", // 연속된 공백 금지
     "react/jsx-filename-extension": "off", // jsx file name 사용 금지 off
     "import/prefer-default-export": "off", // 하나의 경우, default export 사용하도록 지정.
     "import/no-extraneous-dependencies": "off",
@@ -76,7 +76,7 @@
     "react/prop-types": "error", // react props type 지정 필수
     "react/jsx-fragments": "error", // React Fragment 사용시, React Import 필수
     "react/no-unused-state": "error", // 사용되지 않는 state
-    "react/self-closing-comp": "warn", // 셀프 클로징 태그 가능하면 적용
+    "react/self-closing-comp": "error", // 셀프 클로징 태그 가능하면 적용
     "react/jsx-curly-brace-presence": "warn", // jsx 내 불필요한 중괄호 금지
     "react/no-array-index-key": "off",
     "import/extensions": "off",

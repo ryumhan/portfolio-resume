@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { GlobalColor, Horizontal, PaddingContainer, TypoGraphy, Vertical } from '@/components/common-style';
+import React, { useState } from 'react';
+import { GlobalColor, PaddingContainer, TypoGraphy, Vertical } from '@/components/common-style';
 
 import {
   AppealBox,
@@ -68,13 +68,13 @@ const Profile = ({ introduce }: Props): React.ReactElement => {
             <Vertical gap="12px">
               <PhoneBox gap="10px">
                 <ContactIconContainer>
-                  <ContactImage src={'/images/phone.png'} fill alt={'/images/phone.png'}></ContactImage>
+                  <ContactImage src="/images/phone.png" fill alt="/images/phone.png" />
                 </ContactIconContainer>
                 <TypoGraphy style={{ fontSize: '22px', color: GlobalColor.contentsTone }}>{phone}</TypoGraphy>
               </PhoneBox>
               <EmailBox gap="10px">
                 <ContactIconContainer>
-                  <ContactImage src={'/images/email.jpeg'} fill alt={'/images/email.jpeg'}></ContactImage>
+                  <ContactImage src="/images/email.jpeg" fill alt="/images/email.jpeg" />
                 </ContactIconContainer>
                 <TypoGraphy style={{ fontSize: '22px', color: GlobalColor.contentsTone }}>{email}</TypoGraphy>
               </EmailBox>
@@ -84,7 +84,7 @@ const Profile = ({ introduce }: Props): React.ReactElement => {
       </ProfileContainer>
 
       {/* right */}
-      <AppealContainer style={{ visibility: onhover ? 'visible' : 'hidden' }} gap={'50px'}>
+      <AppealContainer style={{ visibility: onhover ? 'visible' : 'hidden' }} gap="50px">
         <HoverBoxTitle>
           <TypoGraphy style={{ fontSize: '24px' }}>About me..?</TypoGraphy>
         </HoverBoxTitle>

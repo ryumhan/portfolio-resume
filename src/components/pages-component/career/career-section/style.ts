@@ -86,7 +86,7 @@ export const Circle = styled.div<CircleProps>(({ isActive, size, descripton, rel
     width: '220px',
     height: '50px',
     fontSize: '15px',
-    fontWeight: '400',
+    fontWeight: '500',
     color: GlobalColor.contentsTone,
   },
 

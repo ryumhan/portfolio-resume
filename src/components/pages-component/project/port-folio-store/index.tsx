@@ -47,8 +47,8 @@ const PortFolioStore = ({ projects }: Props): React.ReactElement => {
                     <StoreTitle>
                       <TypoGraphy
                         style={{
-                          fontSize: '15px',
-                          fontWeight: '500',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
                           color: project.type === '기타' ? GlobalColor.contentsTone : 'white',
                         }}
                       >
@@ -56,7 +56,7 @@ const PortFolioStore = ({ projects }: Props): React.ReactElement => {
                       </TypoGraphy>
                       <TypoGraphy
                         style={{
-                          fontSize: '10px',
+                          fontSize: '12px',
                           fontWeight: '400',
                           color: project.type === '기타' ? GlobalColor.contentsTone : 'white',
                         }}

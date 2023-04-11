@@ -292,7 +292,7 @@ export const PROJECT_CONFIG: Project[] = [
     imgType: 'kiosk',
   },
   {
-    title: '프리미엄 체크 V2 신규개발(서비스 종료)',
+    title: '프리미엄 체크 V2 신규개발',
     type: 'Mobile',
     role: 'FE 신규 개발(참여)',
     skill: ['react-native', 'mobx-state-tree', 'styled-component', 'react-query'],

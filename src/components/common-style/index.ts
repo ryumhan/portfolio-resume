@@ -53,8 +53,8 @@ export const TypoGraphy = styled.span`
 `;
 
 export const ArrowDiv = styled.div<ArrowProps>(({ direction, size }) => ({
-  width: size ? size : '15px' /* 사이즈 */,
-  height: size ? size : '15px' /* 사이즈 */,
+  width: size || '15px' /* 사이즈 */,
+  height: size || '15px' /* 사이즈 */,
   borderTop: `1px solid ${GlobalColor.contentsTone}` /* 선 두께 */,
   borderRight: `1px solid ${GlobalColor.contentsTone}` /* 선 두께 */,
   transform: direction === 'left' ? 'rotate(225deg)' : 'rotate(45deg)' /* 각도 */,
