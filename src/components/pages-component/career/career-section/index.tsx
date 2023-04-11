@@ -2,8 +2,6 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Company } from '@/model/company';
 import {
   CareerCircleContainer,
-  CareerDurationContainer,
-  CareerTotal,
   Circle,
   Container,
   SectionTitle,
@@ -15,14 +13,7 @@ import {
   SkillElementImage,
   SkillTitle,
 } from './style';
-import {
-  ArrowDiv,
-  CenterContainer,
-  GlobalColor,
-  Horizontal,
-  TypoGraphy,
-  Vertical,
-} from '@/components/common-style';
+import { CenterContainer, GlobalColor, Horizontal, TypoGraphy } from '@/components/common-style';
 import { SkillSet } from '@/model/skill';
 
 const YEAR_WEIGHT = 55;

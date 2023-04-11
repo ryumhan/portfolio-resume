@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { GlobalColor, Horizontal, TypoGraphy } from '@/components/common-style';
+import { Horizontal, TypoGraphy } from '@/components/common-style';
 import { LayOutContainer, LayOutHorizontaStyle, NavItem, NavMenu } from './style';
 
 interface Props {
