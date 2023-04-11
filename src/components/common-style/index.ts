@@ -19,6 +19,8 @@ export const GlobalColor = {
   text: '#3c3c3c',
 };
 
+export const ShadowingBox = `0px 2px 4px 0px ${GlobalColor.generalTone}`;
+
 export const Horizontal = styled.div<FlexProps>(({ gap, justifyContent }) => ({
   display: 'flex',
   alignItems: 'center',

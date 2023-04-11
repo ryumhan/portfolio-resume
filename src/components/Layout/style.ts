@@ -15,4 +15,10 @@ export const NavMenu = styled(Horizontal)`
 
 export const NavItem = styled.div`
   cursor: pointer;
+  transition: 0.2s;
+
+  :hover {
+    background-color: ${GlobalColor.lightTone};
+    border-radius: 10%;
+  }
 `;

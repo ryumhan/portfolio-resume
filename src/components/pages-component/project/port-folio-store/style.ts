@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { GlobalColor, Horizontal, Vertical } from '@/components/common-style';
+import { GlobalColor, Horizontal, ShadowingBox, Vertical } from '@/components/common-style';
 
 interface StoreWrapperProps {
   selected: boolean;
@@ -8,6 +8,10 @@ interface StoreWrapperProps {
 
 interface ImageContainerProps {
   kiosk: boolean;
+}
+
+interface ProjectContainerProps {
+  selected: boolean;
 }
 
 const ProjectImageStyle = {
@@ -19,53 +23,71 @@ const ProjectImageStyle = {
 export const Container = styled(Vertical)`
   height: 100%;
   width: 100%;
-  padding: 50px;
-`;
-
-export const ProjectContainer = styled.div(() => ({
-  backgroundColor: GlobalColor.contentsTone,
-  width: '100px',
-  height: '50px',
-  borderRadius: '50%',
-  margin: 'auto',
-  transition: '0.4s',
-  cursor: 'pointer',
-
-  ':hover': {
-    width: '300px',
-    height: '50px',
-    borderRadius: '20px',
-  },
-}));
-
-export const StoreContainer = styled(Horizontal)`
-  gap: 10px;
+  padding: 0px 60px;
   justify-content: center;
 `;
 
-export const StoreWrapper = styled.div<StoreWrapperProps>(() => ({
+export const ProjectContainer = styled.div<ProjectContainerProps>(({ selected }) => ({
+  width: '45%',
+  height: '50px',
+  margin: 'auto',
+  cursor: 'pointer',
+  opacity: '0.7',
+  position: 'relative',
+
+  ':after': {
+    transition: '0.5s',
+    position: 'absolute',
+    marginTop: '25px',
+    content: '""',
+    width: selected ? '180%' : '100%',
+    height: '1.3px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: GlobalColor.contentsTone,
+  },
+
+  ':hover': {
+    ':after': {
+      width: '100%',
+      transition: '0.5s',
+    },
+  },
+}));
+
+export const StoreContainer = styled(Horizontal)<StoreWrapperProps>(({ selected }) => ({
+  margin: 'auto',
+  gap: '10px',
+  justifyContent: 'center',
+  transition: '0.5s',
+  width: selected ? '0%' : '100%',
+  height: selected ? '0%' : '100%',
+}));
+
+export const StoreWrapper = styled.div<StoreWrapperProps>(({ selected }) => ({
   width: '80px',
-  height: '300px',
+  height: selected ? '0px' : '300px',
   position: 'relative',
   borderRadius: '10px',
-  border: `solid 2px ${GlobalColor.contentsTone}`,
+  border: selected ? '0px' : `solid 1px ${GlobalColor.contentsTone}`,
   overflow: 'hidden',
   cursor: 'pointer',
   transition: '0.3s',
+  boxShadow: ShadowingBox,
+  backgroundColor: 'rgb(110, 110, 110, 0.9)',
 
   ':hover': ProjectImageStyle,
 }));
 
 export const StoreImage = styled(Image)`
   object-fit: cover;
-  object-position: left;
+  object-position: top;
 `;
 
 export const StoreTitle = styled.div`
   position: absolute;
-  top: 65%;
   width: 100%;
-  background-color: rgb(110, 110, 110, 0.5);
+  height: 100%;
 `;
 
 export const StoreDetailContainer = styled(Horizontal)`
@@ -79,8 +101,9 @@ export const ImageContainer = styled.div<ImageContainerProps>(({ kiosk }) => ({
   border: `solid 2px ${GlobalColor.contentsTone}`,
   bordrRadius: '10px',
   overflow: 'hidden',
-  width: kiosk ? '350px' : '660px',
-  height: kiosk ? '600px' : '380px',
+  width: kiosk ? '430px' : '660px',
+  height: kiosk ? '650px' : '380px',
+  boxShadow: ShadowingBox,
   opacity: '1',
 }));
 

@@ -2,7 +2,7 @@ import { Company } from '@/model/company';
 import { Project } from '@/model/project';
 import { SkillSet } from '@/model/skill';
 
-export const MENU_CONFIG = ['Ryu MyungHan', 'Career', 'Project'];
+export const MENU_CONFIG = ['RYU MYUNGHAN', 'CAREER', 'PROJECT'];
 
 export const INTRODUCTION_CONFIG = {
   name: '류명한',
@@ -122,6 +122,7 @@ export const PROJECT_CONFIG: Project[] = [
       'Post Message 를 통해, iframe 으로 연동된 커넥티드앱, 플랫폼간 필요 데이터 통신',
     ],
     contributions: [
+      'Project 리딩(FE 개발 인원 3명)',
       '키오스크 전용 UI 개발',
       '키오스크 전용 화면 보호기 개발',
       '의존성이 높은 기존의 코드 View, Fetch, State 를 분리 하기 위해 Custom Hook 도입',
@@ -130,6 +131,46 @@ export const PROJECT_CONFIG: Project[] = [
     ],
     img: ['/project/platform1.jpg', '/project/platform2.jpg'],
     url: 'https://home.orbro.io',
+  },
+  {
+    title: 'IoT Console',
+    role: 'BE, FE 신규 개발(개인)',
+    skill: [
+      'go',
+      'Kubernetes API',
+      'MicroServices제어',
+      'electron',
+      'react',
+      'styled-component',
+      'Ace Editor',
+      'rsuite',
+    ],
+    descriptions: [
+      'Edge에 돌고 있는 IoT 서비스 Pod들의 현재 설정값과 동작 상태를 제어 하는 유틸리티 킷',
+      '서비스의 PipeLine은 데이터를 센서로 부 터 불러오는 Pod, 데이터를 가공하는 Pod, 데이터를 상위단으로 보내는 Pod로 나뉘어짐',
+      '각 PipeLine의 요소는 각각 Pod로 구성',
+      '(BE) Edge 에서 동작 중인 IoT Deployment 정보와 설정 파일을 kubernetes API 를 통해 접근',
+      '(BE) Client C.R.U.D 요청시 해당 정보를 Kuberetes API 를 통해 읽어와 클라이언트에 편한 형태로 데이터 가공하여 응답',
+      '(BE) gorountine 으로 동시성 유지',
+      '(FE) 동작중인 IoT 서비스의 현재 설정 값을 불러와 데이터 처리 절차를 사용자가 직관적으로 볼 수 있도록 PipeLine을 불러오는 기능',
+      '(FE) 사용자가 데이터를 읽어오고 싶은 곳(센서)에서 부터 가공, 타겟까지 PipeLine 을 새로 구성하는 기능',
+      '(FE) 동작중인 IoT 서비스 PipeLine 의 구성을 수정/제거 하는 기능',
+    ],
+    contributions: [
+      '기획 및 설계부터 시작한, Full Stack 최초 경험',
+      'CLI 및 Open API로 확인 할 수 밖에 없는 IoT 동작 상태를 UI로 표현 할 수 있게 되어 사용성 증대',
+      'Toml 형식으로 이루어진 IoT 설정 값들의 논리적 연관 관계를 Sequence로 표현 할 수 있게 되었으며, 이에 따라 관리자가 데이터가 소스 부터 클라우드까지 처리되는 과정을 한눈에 확인 할 수 있게 됨.',
+      'Kubernetes 를 모르는 사람도 직관적으로 UI를 통해 IoT 서비스를 제어 할 수 있게 됨',
+      'UI 프로그램을 통해, 관리자가 원하는 pod를 새로 만들거나 제거, 그리고 수정 할 수 있음',
+    ],
+    img: [
+      '/project/configurator1.jpg',
+      '/project/configurator2.jpg',
+      '/project/configurator3.jpg',
+      '/project/configurator4.png',
+      '/project/configurator5.png',
+      '/project/configurator6.png',
+    ],
   },
   {
     title: '공공 교통 Platform 앱',
@@ -253,46 +294,6 @@ export const PROJECT_CONFIG: Project[] = [
     ],
     img: ['/project/premium.jpg'],
     imgType: 'kiosk',
-  },
-  {
-    title: 'IoT Console',
-    role: 'BE, FE 신규 개발(개인)',
-    skill: [
-      'go',
-      'Kubernetes API',
-      'MicroServices제어',
-      'electron',
-      'react',
-      'styled-component',
-      'Ace Editor',
-      'rsuite',
-    ],
-    descriptions: [
-      'Edge에 돌고 있는 IoT 서비스 Pod들의 현재 설정값과 동작 상태를 제어 하는 유틸리티 킷',
-      '서비스의 PipeLine은 데이터를 센서로 부 터 불러오는 Pod, 데이터를 가공하는 Pod, 데이터를 상위단으로 보내는 Pod로 나뉘어짐',
-      '각 PipeLine의 요소는 각각 Pod로 구성',
-      '(BE) Edge 에서 동작 중인 IoT Deployment 정보와 설정 파일을 kubernetes API 를 통해 접근',
-      '(BE) Client C.R.U.D 요청시 해당 정보를 Kuberetes API 를 통해 읽어와 클라이언트에 편한 형태로 데이터 가공하여 응답',
-      '(BE) gorountine 으로 동시성 유지',
-      '(FE) 동작중인 IoT 서비스의 현재 설정 값을 불러와 데이터 처리 절차를 사용자가 직관적으로 볼 수 있도록 PipeLine을 불러오는 기능',
-      '(FE) 사용자가 데이터를 읽어오고 싶은 곳(센서)에서 부터 가공, 타겟까지 PipeLine 을 새로 구성하는 기능',
-      '(FE) 동작중인 IoT 서비스 PipeLine 의 구성을 수정/제거 하는 기능',
-    ],
-    contributions: [
-      '기획 및 설계부터 시작한, Full Stack 최초 경험',
-      'CLI 및 Open API로 확인 할 수 밖에 없는 IoT 동작 상태를 UI로 표현 할 수 있게 되어 사용성 증대',
-      'Toml 형식으로 이루어진 IoT 설정 값들의 논리적 연관 관계를 Sequence로 표현 할 수 있게 되었으며, 이에 따라 관리자가 데이터가 소스 부터 클라우드까지 처리되는 과정을 한눈에 확인 할 수 있게 됨.',
-      'Kubernetes 를 모르는 사람도 직관적으로 UI를 통해 IoT 서비스를 제어 할 수 있게 됨',
-      'UI 프로그램을 통해, 관리자가 원하는 pod를 새로 만들거나 제거, 그리고 수정 할 수 있음',
-    ],
-    img: [
-      '/project/configurator1.jpg',
-      '/project/configurator2.jpg',
-      '/project/configurator3.jpg',
-      '/project/configurator4.png',
-      '/project/configurator5.png',
-      '/project/configurator6.png',
-    ],
   },
   {
     title: '기타 관리자 서비스',

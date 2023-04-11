@@ -12,39 +12,42 @@ interface Props {
 const PortFolioStore = ({ projects }: Props): React.ReactElement => {
   const [selected, setSelect] = useState(-1);
 
+  const isSelect = useMemo(() => {
+    return selected !== -1;
+  }, [selected]);
+
   return (
     <Container>
-      <Vertical gap="50px">
-        <ProjectContainer>
+      <Vertical gap="25px">
+        <ProjectContainer selected={isSelect} onMouseEnter={() => setSelect(-1)}>
           <CenterContainer>
-            <TypoGraphy style={{ fontSize: '24px' }}>프로젝트</TypoGraphy>
+            <TypoGraphy style={{ fontSize: '24px' }}>{isSelect ? 'PROJECT' : 'PROJECT LIST'}</TypoGraphy>
           </CenterContainer>
         </ProjectContainer>
 
-        <StoreContainer style={{ display: -1 !== selected ? 'none' : '' }}>
+        <StoreContainer selected={isSelect}>
           {useMemo(() => {
             return projects.map((project, index) => {
               return (
                 <StoreWrapper
-                  style={{ display: index === selected ? 'none' : '' }}
+                  selected={isSelect}
                   key={project.title + index}
-                  selected={selected !== -1}
                   onClick={() => {
                     setSelect(index);
                   }}
                 >
-                  <StoreImage src={project.img[0]} alt={project.img[0]} fill />
+                  {project.img[0] && <StoreImage src={project.img[0]} alt={project.img[0]} fill />}
                   <StoreTitle>
                     <TypoGraphy>{project.title}</TypoGraphy>
                   </StoreTitle>
                 </StoreWrapper>
               );
             });
-          }, [projects, selected])}
+          }, [projects, isSelect])}
         </StoreContainer>
 
         {/* Detail appear only clicked */}
-        {selected !== -1 && <StoreDetail selected={projects[selected]} />}
+        {isSelect && <StoreDetail selected={projects[selected]} />}
       </Vertical>
     </Container>
   );

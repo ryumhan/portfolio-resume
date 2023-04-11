@@ -14,7 +14,7 @@ const Layout = ({ children, menuList, selectCallback }: Props): React.ReactEleme
       {/* nav bar */}
       <Horizontal justifyContent="space-between" style={{ width: '100%' }}>
         <div>
-          <TypoGraphy style={{ fontSize: '25px' }}>PortFolio</TypoGraphy>
+          <TypoGraphy style={{ fontSize: '25px' }}>PORTFOLIO</TypoGraphy>
         </div>
         <NavMenu>
           {useMemo(() => {
