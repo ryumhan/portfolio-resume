@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Project } from '@/model/project';
 import { Container, ProjectContainer, StoreContainer, StoreImage, StoreTitle, StoreWrapper } from './style';
 
-import { CenterContainer, TypoGraphy, Vertical } from '@/components/common-style';
+import { CenterContainer, GlobalColor, TypoGraphy, Vertical } from '@/components/common-style';
 import StoreDetail from './storeDetail';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 
 const PortFolioStore = ({ projects }: Props): React.ReactElement => {
   const [selected, setSelect] = useState(-1);
+  const [projectOnHover, setProjectOnHover] = useState(-1);
 
   const isSelect = useMemo(() => {
     return selected !== -1;
@@ -35,15 +36,39 @@ const PortFolioStore = ({ projects }: Props): React.ReactElement => {
                   onClick={() => {
                     setSelect(index);
                   }}
+                  onMouseEnter={() => setProjectOnHover(index)}
+                  onMouseLeave={() => setProjectOnHover(-1)}
+                  type={project.type}
                 >
-                  {project.img[0] && <StoreImage src={project.img[0]} alt={project.img[0]} fill />}
-                  <StoreTitle>
-                    <TypoGraphy>{project.title}</TypoGraphy>
-                  </StoreTitle>
+                  {projectOnHover === index && project.img[0] && (
+                    <StoreImage src={project.img[0]} alt={project.img[0]} fill />
+                  )}
+                  {projectOnHover !== index && (
+                    <StoreTitle>
+                      <TypoGraphy
+                        style={{
+                          fontSize: '15px',
+                          fontWeight: '500',
+                          color: project.type === '기타' ? GlobalColor.contentsTone : 'white',
+                        }}
+                      >
+                        {project.type}
+                      </TypoGraphy>
+                      <TypoGraphy
+                        style={{
+                          fontSize: '10px',
+                          fontWeight: '400',
+                          color: project.type === '기타' ? GlobalColor.contentsTone : 'white',
+                        }}
+                      >
+                        ({project.title})
+                      </TypoGraphy>
+                    </StoreTitle>
+                  )}
                 </StoreWrapper>
               );
             });
-          }, [projects, isSelect])}
+          }, [projects, isSelect, projectOnHover])}
         </StoreContainer>
 
         {/* Detail appear only clicked */}

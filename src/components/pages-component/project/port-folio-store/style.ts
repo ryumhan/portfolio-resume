@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { GlobalColor, Horizontal, ShadowingBox, Vertical } from '@/components/common-style';
+import { ProjectType } from '@/model/project';
 
 interface StoreWrapperProps {
   selected: boolean;
+  type?: ProjectType;
 }
 
 interface ImageContainerProps {
@@ -12,6 +14,15 @@ interface ImageContainerProps {
 
 interface ProjectContainerProps {
   selected: boolean;
+}
+
+enum ProjectColor {
+  'Web' = '#1478FF',
+  '반응형 Web' = '#3296D7',
+  'FullStack' = '#14148C',
+  'Application' = '#FFD200',
+  'Mobile' = '#C65FF9',
+  '기타' = 'white',
 }
 
 const ProjectImageStyle = {
@@ -64,8 +75,8 @@ export const StoreContainer = styled(Horizontal)<StoreWrapperProps>(({ selected 
   height: selected ? '0%' : '100%',
 }));
 
-export const StoreWrapper = styled.div<StoreWrapperProps>(({ selected }) => ({
-  width: '80px',
+export const StoreWrapper = styled.div<StoreWrapperProps>(({ selected, type }) => ({
+  width: '90px',
   height: selected ? '0px' : '300px',
   position: 'relative',
   borderRadius: '10px',
@@ -74,7 +85,7 @@ export const StoreWrapper = styled.div<StoreWrapperProps>(({ selected }) => ({
   cursor: 'pointer',
   transition: '0.3s',
   boxShadow: ShadowingBox,
-  backgroundColor: 'rgb(110, 110, 110, 0.9)',
+  backgroundColor: type ? ProjectColor[type] : 'white',
 
   ':hover': ProjectImageStyle,
 }));
@@ -86,8 +97,12 @@ export const StoreImage = styled(Image)`
 
 export const StoreTitle = styled.div`
   position: absolute;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 `;
 
 export const StoreDetailContainer = styled(Horizontal)`

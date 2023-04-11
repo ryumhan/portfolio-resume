@@ -22,3 +22,11 @@ export const NavItem = styled.div`
     border-radius: 10%;
   }
 `;
+
+export const LayOutHorizontaStyle = {
+  width: '100%',
+  borderBottom: 'solid',
+  borderColor: GlobalColor.contentsTone,
+  borderWidth: '0.7px',
+  paddingBottom: '5px',
+};

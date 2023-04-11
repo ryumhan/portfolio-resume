@@ -11,12 +11,7 @@ interface Props {
 const RyuMyungHan = ({ ryuRef }: Props): React.ReactElement => {
   return (
     <Container ref={ryuRef}>
-      <Profile
-        education={INTRODUCTION_CONFIG.education}
-        email={INTRODUCTION_CONFIG.email}
-        comment={INTRODUCTION_CONFIG.comment}
-        phone={INTRODUCTION_CONFIG.phone}
-      />
+      <Profile introduce={INTRODUCTION_CONFIG} />
     </Container>
   );
 };

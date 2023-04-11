@@ -1,15 +1,20 @@
 import { Company } from '@/model/company';
+import { Introduce } from '@/model/introduce';
 import { Project } from '@/model/project';
 import { SkillSet } from '@/model/skill';
 
 export const MENU_CONFIG = ['RYU MYUNGHAN', 'CAREER', 'PROJECT'];
 
-export const INTRODUCTION_CONFIG = {
+export const INTRODUCTION_CONFIG: Introduce = {
   name: '류명한',
   email: 'ryum7han@gmail.com',
   phone: '010-9947-7564',
   comment: '호기심 많은 FE 개발자 류명한 입니다.',
-  appeal: ['생산적인 이야기를 통해 다양한 사람들의 개발 노하우를 이야기하는 것을 굉장히 즐거워 합니다.'],
+  appeal: [
+    '빠르게 개발을 진행하는 것보다 곰곰히 생각해서 항상 더 나은 코드를 만들기 위해 노력합니다.',
+    '이야기를 통해 다양한 사람들의 개발 노하우를 공유하는 것을 굉장히 즐거워 합니다.',
+    '어떠한 문제 상황, 마찰이 생겼을 때 영원한 정답은 없다는 생각으로 항상 끊임 없이 성찰합니다.',
+  ],
   education: [
     { location: '인하대학교 정보통신공학과, 기계공학(복)', duration: ['2011.03', '2018.02'] },
     { location: 'LG전자 SW 교육', duration: ['2018.03', '2018.05'] },
@@ -110,6 +115,7 @@ export const SKILLSET_CONFIG: SkillSet[] = [
 export const PROJECT_CONFIG: Project[] = [
   {
     title: 'ORBRO 플랫폼',
+    type: 'Web',
     role: 'V1 유지 보수 및 V2 신규 FE 개발(참여)',
     skill: ['react', 'redux', 'mapbox', 'stylus', 'emotion/styled-component'],
     descriptions: [
@@ -133,7 +139,93 @@ export const PROJECT_CONFIG: Project[] = [
     url: 'https://home.orbro.io',
   },
   {
+    title: '공공 교통 Platform 앱',
+    type: 'Web',
+    role: 'FE V2 개발(개인)',
+    skill: ['react', 'nextJs', 'emotion/styled-component', 'yarn-berry'],
+    descriptions: [
+      'ORBRO 플랫폼 내의 공공 데이터의 정보를 보여줄 수 있는 LS App',
+      'ORBRO 플랫폼과 별도의 Deployment로 존재하며, 플랫폼에서 해당 url을 Iframe 으로 로드하는 방식',
+      'SDK를 통해서만 ORBRO 플랫폼과 앱이 Token 과 Origin을 공유하기 때문에 플랫폼을 통해서만 접근 가능',
+      '플랫폼 내의 공공 Object(CCTV, 버스, 지하철, 비행기 클릭시) 클릭시 해당 앱 Display',
+      '각 Object의 현재 정보를 실시간으로 보여줌',
+      '플랫폼에 내재된 iframe 형태로 해당앱 존재',
+    ],
+    contributions: [
+      '기존의 CSR 방식에서 클릭시 앱이 늦게 뜨던 문제를 NextJS로 Migration을 통해 해결',
+      '플랫폼에서 클릭시 해당 Object에 대한 데이터 수신을 위한 postMessage 구현',
+      'Docker 빌드 및 배포 소요시간 단축을 위해 yarn-berry 적용',
+    ],
+    img: [
+      '/project/public-app1.jpg',
+      '/project/public-app2.jpg',
+      '/project/public-app3.jpg',
+      '/project/public-app4.jpg',
+      '/project/public-app5.jpg',
+      '/project/public-app6.png',
+    ],
+    url: 'https://home.orbro.io',
+  },
+  {
+    title: '건설 안전 관리자 서비스',
+    type: 'Web',
+    role: 'FE 신규 개발(개인)',
+    skill: ['react', 'emotion/styled-component', 'redux', 'mabbox'],
+    descriptions: [
+      '건설작업 환경을 위해 해당 지역에 사용자를 등록하고, 위험 구역을 설정, 관리 하는 서비스',
+      'zone 설정을 통해 위험/안전/작업 구역을 설정 하능 기능',
+      '해당 작업장에 출입 가능한 사용자를 등록하는 기능',
+      '사용자가 위험구역에 진입시 Push 알림을 전달 할 수 있도록 장치와 사용자를 맵핑하는 기능',
+    ],
+    contributions: ['mapbox를 통해 지도상에 위험구역을 설정 할 수 있도록 UI 구현.'],
+    img: [
+      '/project/smart-safety-app2.png',
+      '/project/smart-safety-app1.png',
+      '/project/smart-safety-app3.png',
+    ],
+  },
+  {
+    title: '모두의 안심벨',
+    type: '반응형 Web',
+    role: '홈페이지 리뉴얼 FE 개발(참여)',
+    skill: ['react', '반응형 UI', 'emotion/styled-component'],
+    descriptions: [
+      '범죄 취약지구를 위한 안심벨 홍보 및 신청 홈페이지',
+      '안심벨 소개, 신청, 신청조회가 주된 기능',
+      '주소 및 개인정보 입력후 안심벨을 배송 요청 할 수 있음',
+      '신상정보를 이용하여 배송 상태를 확인 할 수 있음',
+      '반응형 UI로 각 장치에 따라 style 분기',
+    ],
+    contributions: ['반응형 UI 도입', '코드 리뷰를 통해 각 페이지 별 소스 일치화'],
+    url: 'https://modubell.com',
+    img: ['/project/safety1.jpg', '/project/safety2.jpg', '/project/safety3.jpg', '/project/safety4.jpg'],
+  },
+  {
+    title: 'Access 관리자 서비스',
+    type: 'Web',
+    role: '유지 보수 및 신규 기능 FE 개발(참여)',
+    skill: ['react', 'mapbox', 'redux', 'emotion/styled-component'],
+    descriptions: [
+      '실내 출입 기록 관리용 서비스',
+      '허용된 사용자 및 방문자의 모바일이 출입문을 통과시 출입 여부를 판단하여 기록을 관리하는 것이 주된 기능',
+    ],
+    contributions: [
+      '한번에 다량의 데이터를 불러오는 응답 latency를 줄이기 위해 인피니티 스크롤로 수정',
+      '테이블 Input Component의 onChange Event 시 불필요한 Rendering 방지를 위하여 useMemo로 수정',
+      '기존의 의존성 심한 stylus 마크업 방식을 styled-component 로 변경',
+    ],
+    img: [
+      '/project/access1.jpg',
+      '/project/access2.jpg',
+      '/project/access3.jpg',
+      '/project/access4.jpg',
+      '/project/access5.jpg',
+      '/project/access6.jpg',
+    ],
+  },
+  {
     title: 'IoT Console',
+    type: 'FullStack',
     role: 'BE, FE 신규 개발(개인)',
     skill: [
       'go',
@@ -173,34 +265,8 @@ export const PROJECT_CONFIG: Project[] = [
     ],
   },
   {
-    title: '공공 교통 Platform 앱',
-    role: 'FE V2 개발(개인)',
-    skill: ['react', 'nextJs', 'emotion/styled-component', 'yarn-berry'],
-    descriptions: [
-      'ORBRO 플랫폼 내의 공공 데이터의 정보를 보여줄 수 있는 LS App',
-      'ORBRO 플랫폼과 별도의 Deployment로 존재하며, 플랫폼에서 해당 url을 Iframe 으로 로드하는 방식',
-      'SDK를 통해서만 ORBRO 플랫폼과 앱이 Token 과 Origin을 공유하기 때문에 플랫폼을 통해서만 접근 가능',
-      '플랫폼 내의 공공 Object(CCTV, 버스, 지하철, 비행기 클릭시) 클릭시 해당 앱 Display',
-      '각 Object의 현재 정보를 실시간으로 보여줌',
-      '플랫폼에 내재된 iframe 형태로 해당앱 존재',
-    ],
-    contributions: [
-      '기존의 CSR 방식에서 클릭시 앱이 늦게 뜨던 문제를 NextJS로 Migration을 통해 해결',
-      '플랫폼에서 클릭시 해당 Object에 대한 데이터 수신을 위한 postMessage 구현',
-      'Docker 빌드 및 배포 소요시간 단축을 위해 yarn-berry 적용',
-    ],
-    img: [
-      '/project/public-app1.jpg',
-      '/project/public-app2.jpg',
-      '/project/public-app3.jpg',
-      '/project/public-app4.jpg',
-      '/project/public-app5.jpg',
-      '/project/public-app6.png',
-    ],
-    url: 'https://home.orbro.io',
-  },
-  {
     title: '상차 리프트 키오스크 앱',
+    type: 'Application',
     role: '신규 FE 개발(개인)',
     skill: ['react', 'electron', 'serial-communication', 'mqtt'],
     descriptions: [
@@ -226,61 +292,8 @@ export const PROJECT_CONFIG: Project[] = [
     imgType: 'kiosk',
   },
   {
-    title: '건설 안전 관리자 서비스',
-    role: 'FE 신규 개발(개인)',
-    skill: ['react', 'emotion/styled-component', 'redux', 'mabbox'],
-    descriptions: [
-      '건설작업 환경을 위해 해당 지역에 사용자를 등록하고, 위험 구역을 설정, 관리 하는 서비스',
-      'zone 설정을 통해 위험/안전/작업 구역을 설정 하능 기능',
-      '해당 작업장에 출입 가능한 사용자를 등록하는 기능',
-      '사용자가 위험구역에 진입시 Push 알림을 전달 할 수 있도록 장치와 사용자를 맵핑하는 기능',
-    ],
-    contributions: ['mapbox를 통해 지도상에 위험구역을 설정 할 수 있도록 UI 구현.'],
-    img: [
-      '/project/smart-safety-app2.png',
-      '/project/smart-safety-app1.png',
-      '/project/smart-safety-app3.png',
-    ],
-  },
-  {
-    title: '모두의 안심벨',
-    role: '홈페이지 리뉴얼 FE 개발(참여)',
-    skill: ['react', '반응형 UI', 'emotion/styled-component'],
-    descriptions: [
-      '범죄 취약지구를 위한 안심벨 홍보 및 신청 홈페이지',
-      '안심벨 소개, 신청, 신청조회가 주된 기능',
-      '주소 및 개인정보 입력후 안심벨을 배송 요청 할 수 있음',
-      '신상정보를 이용하여 배송 상태를 확인 할 수 있음',
-      '반응형 UI로 각 장치에 따라 style 분기',
-    ],
-    contributions: ['반응형 UI 도입', '코드 리뷰를 통해 각 페이지 별 소스 일치화'],
-    url: 'https://modubell.com',
-    img: ['/project/safety1.jpg', '/project/safety2.jpg', '/project/safety3.jpg', '/project/safety4.jpg'],
-  },
-  {
-    title: 'Access 관리자 서비스',
-    role: '유지 보수 및 신규 기능 FE 개발(참여)',
-    skill: ['react', 'mapbox', 'redux', 'emotion/styled-component'],
-    descriptions: [
-      '실내 출입 기록 관리용 서비스',
-      '허용된 사용자 및 방문자의 모바일이 출입문을 통과시 출입 여부를 판단하여 기록을 관리하는 것이 주된 기능',
-    ],
-    contributions: [
-      '한번에 다량의 데이터를 불러오는 응답 latency를 줄이기 위해 인피니티 스크롤로 수정',
-      '테이블 Input Component의 onChange Event 시 불필요한 Rendering 방지를 위하여 useMemo로 수정',
-      '기존의 의존성 심한 stylus 마크업 방식을 styled-component 로 변경',
-    ],
-    img: [
-      '/project/access1.jpg',
-      '/project/access2.jpg',
-      '/project/access3.jpg',
-      '/project/access4.jpg',
-      '/project/access5.jpg',
-      '/project/access6.jpg',
-    ],
-  },
-  {
     title: '프리미엄 체크 V2 신규개발(서비스 종료)',
+    type: 'Mobile',
     role: 'FE 신규 개발(참여)',
     skill: ['react-native', 'mobx-state-tree', 'styled-component', 'react-query'],
     descriptions: [
@@ -296,7 +309,8 @@ export const PROJECT_CONFIG: Project[] = [
     imgType: 'kiosk',
   },
   {
-    title: '기타 관리자 서비스',
+    title: '관리자 서비스',
+    type: '기타',
     role: 'FE 신규 개발(개인)',
     skill: ['react', 'nextJs', 'yarn-berry', 'mapbox'],
     descriptions: [
@@ -314,7 +328,8 @@ export const PROJECT_CONFIG: Project[] = [
     img: [],
   },
   {
-    title: '기타 C/C++ 개발',
+    title: 'C/C++ 개발',
+    type: '기타',
     role: '임베디드 및 엣지 시스템 프로그램(참여)',
     skill: ['C/C++', 'ubuntu18/20', 'mingw', 'mapbox'],
     descriptions: [
