@@ -48,7 +48,7 @@ const PortFolioStore = ({ projects }: Props): React.ReactElement => {
                       <TypoGraphy
                         style={{
                           fontSize: '16px',
-                          fontWeight: 'bold',
+                          fontWeight: '500',
                           color: project.type === '기타' ? GlobalColor.contentsTone : 'white',
                         }}
                       >

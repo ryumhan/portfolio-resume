@@ -22,44 +22,48 @@ const EtcProjectDetailContents = ({ selected }: Props): React.ReactElement => {
         </DetailTitle>
       </PaddingContainer>
 
-      <Horizontal justifyContent="space-between" style={{ height: '100%' }}>
-        <DetailTitle>
-          <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>
-            주요 서비스 및 개발
-          </TypoGraphy>
-          <PaddingContainer>
-            <Vertical gap="12px">
-              {selected.descriptions.map((desc, idx) => {
-                return (
-                  <Horizontal key={desc[0] + idx} gap="10px">
-                    <TypoGraphy>-</TypoGraphy>
-                    <DetailContents>
-                      <TypoGraphy>{desc}</TypoGraphy>
-                    </DetailContents>
-                  </Horizontal>
-                );
-              })}
-            </Vertical>
-          </PaddingContainer>
-        </DetailTitle>
+      <Horizontal style={{ height: '100%' }}>
+        <PaddingContainer style={{ height: '100%' }}>
+          <DetailTitle>
+            <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>
+              기타 서비스 및 개발
+            </TypoGraphy>
+            <PaddingContainer>
+              <Vertical gap="12px">
+                {selected.descriptions.map((desc, idx) => {
+                  return (
+                    <Horizontal key={desc[0] + idx} gap="10px">
+                      <TypoGraphy>-</TypoGraphy>
+                      <DetailContents>
+                        <TypoGraphy>{desc}</TypoGraphy>
+                      </DetailContents>
+                    </Horizontal>
+                  );
+                })}
+              </Vertical>
+            </PaddingContainer>
+          </DetailTitle>
+        </PaddingContainer>
 
-        <DetailTitle>
-          <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>기여점</TypoGraphy>
-          <PaddingContainer>
-            <Vertical gap="12px">
-              {selected.contributions.map((contri, idx) => {
-                return (
-                  <Horizontal key={contri[0] + idx} gap="10px">
-                    <TypoGraphy>-</TypoGraphy>
-                    <DetailContents>
-                      <TypoGraphy>{contri}</TypoGraphy>
-                    </DetailContents>
-                  </Horizontal>
-                );
-              })}
-            </Vertical>
-          </PaddingContainer>
-        </DetailTitle>
+        <PaddingContainer style={{ height: '100%' }}>
+          <DetailTitle>
+            <TypoGraphy style={{ fontSize: '18px', color: GlobalColor.contentsTone }}>개발 내용</TypoGraphy>
+            <PaddingContainer>
+              <Vertical gap="12px">
+                {selected.contributions.map((contri, idx) => {
+                  return (
+                    <Horizontal key={contri[0] + idx} gap="10px">
+                      <TypoGraphy>-</TypoGraphy>
+                      <DetailContents>
+                        <TypoGraphy>{contri}</TypoGraphy>
+                      </DetailContents>
+                    </Horizontal>
+                  );
+                })}
+              </Vertical>
+            </PaddingContainer>
+          </DetailTitle>
+        </PaddingContainer>
       </Horizontal>
     </Vertical>
   );
